@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/gary-rafferty/cranson.git
+  revision: 69fb181e8a84448089d4eeb2139b804b684af6eb
+  specs:
+    cranson (0.1.0)
+      nokogiri (~> 1.6.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -138,6 +145,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  cranson!
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
