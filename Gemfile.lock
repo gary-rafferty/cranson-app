@@ -40,6 +40,9 @@ GEM
       activemodel (= 5.0.0.1)
       activesupport (= 5.0.0.1)
       arel (~> 7.0)
+    activerecord-postgis-adapter (4.0.2)
+      activerecord (~> 5.0.0)
+      rgeo-activerecord (~> 5.0.0)
     activesupport (5.0.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -103,6 +106,10 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    rgeo (0.5.3)
+    rgeo-activerecord (5.0.0)
+      activerecord (~> 5.0.0)
+      rgeo (~> 0.3)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -144,6 +151,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgis-adapter
   byebug
   cranson!
   listen (~> 3.0.5)
