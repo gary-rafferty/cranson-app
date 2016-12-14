@@ -1,5 +1,5 @@
 class Plan < ApplicationRecord
-  validates :status, :description, :reference, :location, :reference, :registration_date, presence: true
+  validates :status, :description, :reference, :location, :reference, :registration_date, :address, presence: true
 
   scope :decided, -> { where(status: 'Decided' ) }
   scope :invalid_or_withdrawn, -> { where(status: 'Invalid or Withdrawn') }

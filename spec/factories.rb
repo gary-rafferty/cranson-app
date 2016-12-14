@@ -7,5 +7,6 @@ FactoryGirl.define do
     more_info_link "http://moreinfolink.ie"
     reference "ABC/123"
     registration_date "2016-12-13"
+    address "1 Big Street, Co. Dublin"
   end
 end

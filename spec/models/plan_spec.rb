@@ -5,7 +5,7 @@ RSpec.describe Plan, type: :model do
     let(:plan) { build(:plan) }
 
     describe 'presence of required attrs' do
-      %w{status description reference location reference registration_date}.each do |attr|
+      %w{status description reference location reference registration_date address}.each do |attr|
         it "invalid if #{attr} is missing" do
           plan.send("#{attr}=", nil)
           expect(plan).to_not be_valid
