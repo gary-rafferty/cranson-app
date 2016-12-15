@@ -7,6 +7,8 @@ class Plan < ApplicationRecord
   scope :pending, -> { where(status: 'Pending') }
   scope :on_appeal, -> { where(status: 'On Appeal') }
 
+  default_scope { order(registration_date: :desc) }
+
   class << self
     def persist(plan)
       attributes = {
