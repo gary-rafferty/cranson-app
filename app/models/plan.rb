@@ -6,4 +6,24 @@ class Plan < ApplicationRecord
   scope :unknown, -> { where(status: 'Current status not assigned in APAS') }
   scope :pending, -> { where(status: 'Pending') }
   scope :on_appeal, -> { where(status: 'On Appeal') }
+
+  class << self
+    def persist(plan)
+      attributes = {
+        reference: plan.planning_reference,
+        description: plan.description,
+        address: plan.location,
+        location: "POINT(#{plan.lat} #{plan.long})",
+        status: plan.current_status,
+        more_info_link: plan.more_information,
+        registration_date: plan.registration_date,
+        decision_date: plan.decision_date,
+      }
+
+      begin
+        self.find_or_create_by(attributes)
+      rescue ActiveRecord::StatementInvalid
+      end
+    end
+  end
 end
