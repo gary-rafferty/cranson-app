@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  get 'plans/index'
-  get 'plans/search'
+
+  resources :plans, only: [:index, :show] do
+    get :search, on: :collection
+  end
 end
