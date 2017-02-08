@@ -55,4 +55,17 @@ RSpec.describe Plan, type: :model do
       end
     end
   end
+
+  describe 'searching' do
+    let!(:hit) { create(:plan, address: 'Dublin Road') }
+    let!(:miss){ create(:plan, address: 'Malahide Road') }
+
+    it 'exposes a search_by_address method' do
+      expect(Plan).to respond_to(:search_by_address)
+    end
+
+    it 'hits on address matches' do
+      expect(Plan.search_by_address('dublin').count).to eq 1
+    end
+  end
 end

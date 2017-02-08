@@ -1,4 +1,6 @@
 class Plan < ApplicationRecord
+  include PgSearch
+  
   validates :status, :description, :reference, :location, :reference, :registration_date, :address, presence: true
 
   scope :decided, -> { where(status: 'Decided' ) }
@@ -9,6 +11,8 @@ class Plan < ApplicationRecord
 
   default_scope { order(registration_date: :desc) }
 
+  pg_search_scope :search_by_address, against: :address
+  
   class << self
     def persist(plan)
       attributes = {
