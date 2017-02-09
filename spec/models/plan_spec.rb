@@ -54,6 +54,35 @@ RSpec.describe Plan, type: :model do
         expect(Plan.on_appeal.first).to eq on_appeal
       end
     end
+
+    describe '#within_metres_of' do
+      let(:sphere)  { RGeo::Geographic.spherical_factory(srid: 4326) }
+      let(:spire)   { [ 53.3504715, -6.2620188 ] }
+
+      it 'includes all records within specified distance' do
+        gpo = create(:plan, location: "POINT(53.349988 -6.2610747)")
+
+        expect(Plan.within_metres_of(1000, spire)).to eq [ gpo ]
+
+        source = sphere.point(*spire)
+        destination = gpo.location
+        distance = sphere.line(source, destination).length
+
+        expect(distance).to be < 1000
+      end
+
+      it 'rejects all records not within specified distance' do
+        storehouse = create(:plan, location: "POINT(53.3428383 -6.2907724)")
+
+        expect(Plan.within_metres_of(1000, spire)).to eq [ ]
+
+        source = sphere.point(*spire)
+        destination = storehouse.location
+        distance = sphere.line(source, destination).length
+
+        expect(distance).to be > 1000
+      end
+    end
   end
 
   describe 'searching' do

@@ -8,6 +8,11 @@ class Plan < ApplicationRecord
   scope :unknown, -> { where(status: 'Current status not assigned in APAS') }
   scope :pending, -> { where(status: 'Pending') }
   scope :on_appeal, -> { where(status: 'On Appeal') }
+  scope :within_metres_of, -> (metres, latlon) {
+    where(
+      "ST_DWithin(location::geography, \'POINT(#{latlon.join(' ')})\'::geography, #{metres})"
+    )
+  }
 
   default_scope { order(registration_date: :desc) }
 
