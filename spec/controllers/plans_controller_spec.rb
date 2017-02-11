@@ -3,9 +3,18 @@ require 'rails_helper'
 RSpec.describe PlansController, type: :controller do
 
   describe "GET #index" do
-    it "returns http success" do
+    let!(:plans) { 100.times { create(:plan) } }
+
+    it "paginates plans in batches of 50" do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(JSON.parse(response.body).length).to eq 50
+    end
+
+    it 'include link headers' do
+      get :index
+      expect(response.headers['Link']).to include 'next'
+      expect(response.headers['Per-Page']).to eq '50'
+      expect(response.headers['Total']).to eq '100'
     end
   end
 

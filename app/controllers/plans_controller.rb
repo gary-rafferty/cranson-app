@@ -3,6 +3,9 @@ class PlansController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   def index
+    plans = Plan.all
+
+    paginate json: plans, per_page: 50
   end
 
   def show
@@ -13,7 +16,7 @@ class PlansController < ApplicationController
   def search
     if params[:query].present?
       @plans = Plan.search_by_address(params[:query])
-      render json: @plans
+      paginate json: @plans
     else
       render json: 'You must include query', status: :bad_request
     end

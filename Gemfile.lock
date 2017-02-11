@@ -48,6 +48,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    api-pagination (4.5.2)
     arel (7.1.4)
     builder (3.2.2)
     byebug (9.0.6)
@@ -63,6 +64,18 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -161,9 +174,11 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgis-adapter
+  api-pagination
   byebug
   cranson!
   factory_girl_rails
+  kaminari
   listen (~> 3.0.5)
   pg (~> 0.18)
   pg_search

@@ -28,7 +28,7 @@ Run `./bin/rake spec` to run the current specs
 - [x] Text search on planning address
 - [x] Search applications within n metres
 - [ ] API entry point for search within n metres
-- [ ] Pagination across API responses
+- [x] Pagination across API responses
 - [ ] Determine update frequency of Fingal dataset
 - [ ] Investigate other authority datasets
 
