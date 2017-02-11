@@ -13,6 +13,34 @@ Ideally, I'd like to be able to query things like
 For now, I've only looked into the Fingal's dataset (because that's my local authority) but ideally, this could extend to other authorities.
 To get an idea of how we parse the Fingal dataset, see the [Cranson](https://github.com/gary-rafferty/cranson) repository.
 
+#### Usage
+
+```bash
+
+# /plans will return all plans in batches of 50. Uses link-header pagination
+$ curl localhost:3000/plans
+[
+  {
+    "id":14939,
+    "status":"Decided",
+    "decision_date":"2017-01-27",
+    "description":"Two storey extension to existing two storey two bedroom dwelling...",
+    "location":"POINT (53.38008495113 -6.44010327988883)",
+    "more_info_link":"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147",
+    "reference":"FW16A/0147",
+    "registration_date":"2016-12-29",
+    "address":"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"
+  }
+  // snipped
+]
+
+# /plans/:id will return a single plan resource
+$ curl localhost:3000/plans/14939
+
+# /plans/search?query=str will return all plans with addresses containing str
+$ curl localhost:3000/plans/search?query=raheny
+```
+
 #### Seeding
 
 Run `./bin/rake planning_applications:import` to seed the db with plans from the last seven years.
