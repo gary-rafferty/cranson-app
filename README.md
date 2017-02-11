@@ -45,6 +45,8 @@ $ curl localhost:3000/plans/search?query=raheny
 
 Run `./bin/rake planning_applications:import` to seed the db with plans from the last seven years.
 
+_As we include other authorities, it will probably make sense to namespace these tasks e.g `fingal:import`._
+
 #### Testing
 
 Run `./bin/rake spec` to run the current specs
@@ -58,6 +60,8 @@ Run `./bin/rake spec` to run the current specs
 - [ ] API entry point for search within n metres
 - [x] Pagination across API responses
 - [ ] Determine update frequency of Fingal dataset
+- [ ] Once determined, automatically retrieve/parse the dataset using Cron/Scheduler
+- [ ] Can we derive / access any other resources not exposed in the dataset
 - [ ] Investigate other authority datasets
 
 #### Contributing
