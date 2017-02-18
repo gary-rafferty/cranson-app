@@ -3,7 +3,7 @@ namespace :planning_applications do
   task import: :environment do
     require 'cranson'
 
-    xml_path = Rails.root.join('lib', 'applications_0117.xml')
+    xml_path = Rails.root.join('lib', 'applications_0218.xml')
 
     document = Cranson::Parser.new
     document.add_observer(Observer.new)
