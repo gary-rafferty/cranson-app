@@ -59,8 +59,8 @@ Run `./bin/rake spec` to run the current specs
 - [x] Search applications within n metres
 - [ ] API entry point for search within n metres
 - [x] Pagination across API responses
-- [ ] Deploy to Heroku (Postgis extension required)
-- [ ] Use scheduler to retrieve/parse the dataset each day
+- [x] Deploy to Heroku (Postgis extension required)
+- [x] Use scheduler to retrieve/parse the dataset each day
 - [ ] Can we derive / access any other resources not exposed in the dataset
 - [ ] Investigate other authority datasets
 
