@@ -20,6 +20,8 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  postgis_extension: postgis
+  schema_search_path: '"$user", public, postgis'
 
 development:
   <<: *default
@@ -83,3 +85,4 @@ production:
   database: cranson-app_production
   username: cranson-app
   password: <%= ENV['CRANSON-APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] ? ENV['DATABASE_URL'].sub(/^postgres/, "postgis") : '' %>
