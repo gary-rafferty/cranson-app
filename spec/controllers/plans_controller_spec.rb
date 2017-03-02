@@ -24,7 +24,7 @@ RSpec.describe PlansController, type: :controller do
 
       it 'returns plan as json' do
         get :show, params: { id: plan.id }
-        expect(response.body).to eq plan.to_json
+        expect(response.body).to eq PlanSerializer.new(plan).to_json
       end
     end
 
@@ -44,7 +44,8 @@ RSpec.describe PlansController, type: :controller do
 
       it 'returns json search results' do
         get :search, params: { query: query }
-        expect(response.body).to eq [plan_one, plan_two].to_json
+        json = [plan_one, plan_two].map {| p| PlanSerializer.new(p) }.to_json
+        expect(response.body).to eq json
       end
     end
 
