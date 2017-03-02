@@ -56,4 +56,27 @@ RSpec.describe PlansController, type: :controller do
       end
     end
   end
+
+  describe "GET #within" do
+    describe "when all query params are present" do
+      let!(:plan_one) { create(:plan) }
+      let(:lat) { '53.397' }
+      let(:lng) { '6.2002' }
+      let(:latlng) { "#{lat}#{lng}" }
+      let(:kilometres) { "5" }
+
+      it 'returns json search results' do
+        expect(Plan).to receive(:within_kilometres_of).with(kilometres, latlng.split(',')).and_return [plan_one]
+        get :within, params: { latlng: latlng, kilometres: kilometres }
+        expect(response.body).to eq [PlanSerializer.new(plan_one)].to_json
+      end
+    end
+
+    describe "when a query param is missing" do
+      it '400s' do
+        get :within, params: { latlng: '53.1,-6.5' }
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+  end
 end

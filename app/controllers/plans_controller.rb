@@ -22,6 +22,15 @@ class PlansController < ApplicationController
     end
   end
 
+  def within
+    if params[:kilometres].present? && params[:latlng].present?
+      @plans = Plan.within_kilometres_of(params[:kilometres], params[:latlng].split(','))
+      paginate json: @plans
+    else
+      render json: 'You must include kilometres and latlng', status: :bad_request
+    end
+  end
+
   private
 
   def record_not_found(error)
