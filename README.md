@@ -25,8 +25,7 @@ $ curl localhost:3000/plans
     "status":"Decided",
     "decision_date":"2017-01-27",
     "description":"Two storey extension to existing two storey two bedroom dwelling...",
-    "location":"POINT (53.38008495113 -6.44010327988883)",
-    "more_info_link":"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147",
+    "link":"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147",
     "reference":"FW16A/0147",
     "registration_date":"2016-12-29",
     "address":"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"
@@ -39,6 +38,9 @@ $ curl localhost:3000/plans/14939
 
 # /plans/search?query=str will return all plans with addresses containing str
 $ curl localhost:3000/plans/search?query=raheny
+
+# /plans/within?kilometres=n&latlng=xxx,yyy will returns all plans within n kilometres of latlng
+$ curl localhost:3000/plans/within?kilometres=1&latlng=53.3841296,-6.0731679
 ```
 
 #### Importing data
@@ -57,7 +59,7 @@ Run `./bin/rake spec` to run the current specs
 - [x] Show a single application
 - [x] Text search on planning address
 - [x] Search applications within n metres
-- [ ] API entry point for search within n metres
+- [x] API entry point for search within n kilometres
 - [x] Pagination across API responses
 - [x] Deploy to Heroku (Postgis extension required)
 - [x] Use scheduler to retrieve/parse the dataset each day
