@@ -63,6 +63,10 @@ Run `./bin/rake spec` to run the current specs
 - [x] Pagination across API responses
 - [x] Deploy to Heroku (Postgis extension required)
 - [x] Use scheduler to retrieve/parse the dataset each day
+- [ ] Namespacing of the API
+- [ ] Enable CORS
+- [ ] Throttling
+- [ ] Proper API Documentation
 - [ ] Can we derive / access any other resources not exposed in the dataset
 - [ ] Investigate other authority datasets
 
