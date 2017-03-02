@@ -8,9 +8,9 @@ class Plan < ApplicationRecord
   scope :unknown, -> { where(status: 'Current status not assigned in APAS') }
   scope :pending, -> { where(status: 'Pending') }
   scope :on_appeal, -> { where(status: 'On Appeal') }
-  scope :within_metres_of, -> (metres, latlon) {
+  scope :within_kilometres_of, -> (kilometres, latlon) {
     where(
-      "ST_DWithin(location::geography, \'POINT(#{latlon.join(' ')})\'::geography, #{metres})"
+      "ST_DWithin(location::geography, \'POINT(#{latlon.join(' ')})\'::geography, #{kilometres.to_i * 1000})"
     )
   }
 
