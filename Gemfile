@@ -26,6 +26,10 @@ gem 'api-pagination'
 # serializers
 gem 'active_model_serializers'
 
+# audit log
+gem "audited", "~> 4.3"
+gem "rails-observers", github: 'rails/rails-observers'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
