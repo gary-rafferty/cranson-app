@@ -97,4 +97,100 @@ RSpec.describe Plan, type: :model do
       expect(Plan.search_by_address('dublin').count).to eq 1
     end
   end
+
+  describe '.persist' do
+    describe 'for a new planning reference' do
+      let(:plan) do
+        double('observed_plan',
+          planning_reference: 'abc/123',
+          description: 'description',
+          location: 'location',
+          lat: 1,
+          long: 2,
+          current_status: 'pending',
+          more_information: 'info',
+          registration_date: '2017-03-08',
+          decision_date: '2017-03-08'
+        )
+      end
+
+      it 'creates a new record' do
+        expect {
+          Plan.persist(plan)
+        }.to change { Plan.count }.from(0).to(1)
+      end
+
+      it 'will not create an audit record' do
+        expect {
+          Plan.persist(plan).not_to change { Audited::Audit.count }
+        }
+      end
+    end
+  end
+
+  describe 'for an existing planning reference' do
+    let!(:existing) { create(:plan) }
+
+    describe 'when there are no changes' do
+      let(:plan) do
+        double('observed_plan',
+          planning_reference: existing.reference,
+          description: existing.description,
+          location: existing.address,
+          current_status: existing.status,
+          more_information: existing.more_info_link,
+          registration_date: existing.registration_date,
+          decision_date: existing.decision_date,
+          lat: existing.location.coordinates[0],
+          long: existing.location.coordinates[1]
+        )
+      end
+
+      it 'will not update the record' do
+        expect {
+          Plan.persist(plan)
+        }.not_to change { Plan.count }
+      end
+
+      it 'will not create an audit record' do
+        expect {
+          Plan.persist(plan)
+        }.not_to change { Audited::Audit.count }
+      end
+    end
+
+    describe 'when there are changes' do
+      let(:plan) do
+        double('observed_plan_with_changes',
+          planning_reference: existing.reference,
+          description: existing.description,
+          location: existing.address,
+          current_status: 'New Status',
+          more_information: existing.more_info_link,
+          registration_date: existing.registration_date,
+          decision_date: existing.decision_date,
+          lat: existing.location.coordinates[0],
+          long: existing.location.coordinates[1]
+        )
+      end
+
+      it 'will update the record' do
+        expect {
+          Plan.persist(plan)
+        }.not_to change { Plan.count }
+
+        updated_plan = Plan.where(reference: existing.reference).first
+        expect(updated_plan.status).to eq 'New Status'
+      end
+
+      it 'will create an audit record' do
+        expect {
+          Plan.persist(plan)
+        }.to change { Audited::Audit.count }.from(0).to(1)
+
+        updated_plan = Plan.where(reference: existing.reference).first
+        expect(updated_plan.audits.last.audited_changes.keys).to eq ['status']
+      end
+    end
+  end
 end
