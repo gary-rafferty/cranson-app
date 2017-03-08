@@ -1,7 +1,7 @@
 class Plan < ApplicationRecord
   include PgSearch
 
-  audited on: :update
+  audited except: :location, on: :update
 
   validates :status, :description, :reference, :location, :reference, :registration_date, :address, presence: true
 
