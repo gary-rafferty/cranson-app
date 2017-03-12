@@ -79,4 +79,54 @@ RSpec.describe PlansController, type: :controller do
       end
     end
   end
+
+  describe '#decided' do
+    let!(:plan) { create(:plan, status: 'Decided') }
+
+    it "paginates decided plans" do
+      get :decided
+      body = JSON.parse(response.body)
+      expect(body[0]['status']).to eq 'Decided'
+    end
+  end
+
+  describe '#invalid' do
+    let!(:plan) { create(:plan, status: 'Invalid or Withdrawn') }
+
+    it "paginates invalid plans" do
+      get :invalid
+      body = JSON.parse(response.body)
+      expect(body[0]['status']).to eq 'Invalid or Withdrawn'
+    end
+  end
+
+  describe '#unknown' do
+    let!(:plan) { create(:plan, status: 'Current status not assigned in APAS') }
+
+    it "paginates unknown plans" do
+      get :unknown
+      body = JSON.parse(response.body)
+      expect(body[0]['status']).to eq 'Current status not assigned in APAS'
+    end
+  end
+
+  describe '#pending' do
+    let!(:plan) { create(:plan, status: 'Pending') }
+
+    it "paginates pending plans" do
+      get :pending
+      body = JSON.parse(response.body)
+      expect(body[0]['status']).to eq 'Pending'
+    end
+  end
+
+  describe '#on_appeal' do
+    let!(:plan) { create(:plan, status: 'On Appeal') }
+
+    it "paginates on_appeal plans" do
+      get :on_appeal
+      body = JSON.parse(response.body)
+      expect(body[0]['status']).to eq 'On Appeal'
+    end
+  end
 end

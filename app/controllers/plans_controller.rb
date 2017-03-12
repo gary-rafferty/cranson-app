@@ -31,6 +31,36 @@ class PlansController < ApplicationController
     end
   end
 
+  def decided
+    plans = Plan.decided
+
+    paginate json: plans, per_page: 50
+  end
+
+  def invalid
+    plans = Plan.invalid_or_withdrawn
+
+    paginate json: plans, per_page: 50
+  end
+
+  def unknown
+    plans = Plan.unknown
+
+    paginate json: plans, per_page: 50
+  end
+
+  def pending
+    plans = Plan.pending
+
+    paginate json: plans, per_page: 50
+  end
+
+  def on_appeal
+    plans = Plan.on_appeal
+
+    paginate json: plans, per_page: 50
+  end
+
   private
 
   def record_not_found(error)
