@@ -41,6 +41,22 @@ $ curl localhost:3000/plans/search?query=raheny
 
 # /plans/within?kilometres=n&latlng=xxx,yyy will returns all plans within n kilometres of latlng
 $ curl localhost:3000/plans/within?kilometres=1&latlng=53.3841296,-6.0731679
+
+# /plans/decided will return all decided plans
+$ curl localhost:3000/plans/decided
+
+# /plans/invalid will return all invalid plans
+$ curl localhost:3000/plans/invalid
+
+# /plans/unknown will return all unknown plans
+$ curl localhost:3000/plans/unknown
+
+# /plans/pending will return all pending plans
+$ curl localhost:3000/plans/pending
+
+# /plans/on_appeal will return all on_appeal plans
+$ curl localhost:3000/plans/on_appeal
+
 ```
 
 #### Importing data
