@@ -10,7 +10,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
-    render json: @plan
+    render json: @plan, with_audits: true
   end
 
   def search

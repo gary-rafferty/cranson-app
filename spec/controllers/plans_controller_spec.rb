@@ -16,6 +16,13 @@ RSpec.describe PlansController, type: :controller do
       expect(response.headers['Per-Page']).to eq '50'
       expect(response.headers['Total']).to eq '100'
     end
+
+    it 'does not include an audit trail' do
+      Plan.update_all(address: 'new_address')
+      get :index
+      plan = JSON.parse(response.body)[0]
+      expect(plan.keys).not_to include 'audits'
+    end
   end
 
   describe 'GET #show' do
@@ -24,7 +31,13 @@ RSpec.describe PlansController, type: :controller do
 
       it 'returns plan as json' do
         get :show, params: { id: plan.id }
-        expect(response.body).to eq PlanSerializer.new(plan).to_json
+        expect(response.body).to eq PlanSerializer.new(plan, with_audits: true).to_json
+      end
+
+      it 'includes any audit trails' do
+        plan.update_attributes(address: 'new address')
+        get :show, params: { id: plan.id }
+        expect(JSON.parse(response.body).keys).to include 'audits'
       end
     end
 
