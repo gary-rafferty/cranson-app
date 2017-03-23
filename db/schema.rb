@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308192910) do
+ActiveRecord::Schema.define(version: 20170323190855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170308192910) do
   create_table "plans", force: :cascade do |t|
     t.string   "status"
     t.date     "decision_date"
-    t.string   "description"
+    t.text     "description"
     t.geometry "location",          limit: {:srid=>0, :type=>"point"}
     t.string   "more_info_link"
     t.string   "reference"
