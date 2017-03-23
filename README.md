@@ -68,6 +68,11 @@ Run `./bin/rake planning_applications:import` to retrieve/parse/insert the remot
 
 _As we include other authorities, it will probably make sense to namespace these tasks e.g `fingal:import`._
 
+The import task accepts an optional `false` flag that disables auditing during import. 
+This is useful if you are expecting data to change, but do not want the audits to be created.
+
+`./bin/rake planning_applications:import[false]`.
+
 #### Testing
 
 Run `./bin/rake spec` to run the current specs
