@@ -15,7 +15,7 @@ To get an idea of how we parse the Fingal dataset, see the [Cranson](https://git
 
 #### Usage
 
-For now, full documentation can be found [here](http://gary-rafferty.github.io/cranson-docs).   
+Full documentation can be found [here](http://api.cranson.co).   
 Some high-level usage can be found below.
 
 ```bash
