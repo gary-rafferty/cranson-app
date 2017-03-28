@@ -1,0 +1,589 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Cranons API Documentation</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/gary-rafferty/cranson-app'>Cranson API</a></li>
+            <li><a href='https://github.com/gary-rafferty/cranson'>Cranson Gem</a></li>
+            <li><a href='https://github.com/gary-rafferty/cranson-docs'>Documentation Source</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="introduction-to-cranson">Introduction to Cranson</h1>
+
+<p>Welcome to the Cranson API. You can use this API to access Fingal planning applications.  </p>
+
+<p>We have provided a public RESTful API, that we hope will provide an intuitive way of explore existing, and new planning applications.</p>
+
+<p>As per the project <a href="https://github.com/gary-rafferty/cranson-app">README</a>, the purpose of the API is:</p>
+
+<p>To expose an intuitive interface to query and retrieve planning applications.<br>
+Ideally, consumers should able to programatically query things like<br>
+- Show me all applications submitted last month.<br>
+- Show me all pending applications within 5 kilometres of my house.<br>
+- Show me recently decided applications.<br>
+- Show me all changes / updates for a particular application.</p>
+
+<p>For now, the only housing authority supported is Fingal, but we plan to add more in the future.<br>
+We&rsquo;ve identified datasets for Dublin City Council, Dun-Laoghaire Rathdown, and South County Dublin, so these authorities are on our plan. </p>
+
+<p>If you would like to help, please get in touch on <a href="https://github.com/gary-rafferty/cranson-app/issues/new">Github</a>.</p>
+
+<h1 id="plans">Plans</h1>
+
+<h2 id="get-all-planning-applications">Get All Planning Applications</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.cranson.co/plans"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Decided"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">snipped</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all plans, paginated in batches of 50.<br>
+All enumerated responses use link-header pagination. Please use this to iterate over the paged responses.<br>
+By default, plans are ordered by latest registration date.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans</code></p>
+
+<h2 id="get-a-specific-planning-application">Get a Specific Planning Application</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.cranson.co/plans/14939"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Decided"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"audits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"Current Status"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Pending"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Decided"</span><span class="p">]},</span><span class="w">
+        </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">2017-01-29</span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific planning application. In addition to the plan data, it also includes an audit log of changes over time.<br>
+If there are any changes to display, we will include the original value, the updated value, and the date we retrieved the change.<br>
+In the example above, the status of the application changed from pending to decided.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/&lt;ID&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the plan to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="search-plans-by-address">Search Plans By Address</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.cranson.co/plans/search?query=Clonsilla"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Decided"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all planning applications that have addresses containing <code class="prettyprint">QUERY</code>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/search?query=&lt;QUERY&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>QUERY</td>
+<td>A string used to search against plan addresses.</td>
+</tr>
+</tbody></table>
+
+<h2 id="search-plans-within-n-kilometres-of-a-latlng">Search Plans Within N Kilometres of a LatLng</h2>
+<pre class="highlight shell tab-shell"><code>curl http://api.cranson.co/plans/within?kilometres<span class="o">=</span>1&amp;latlng<span class="o">=</span>53.3841296,-6.0731679
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Decided"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all planning applications within N kilometres of a given LatLng</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/within?kilometres=&lt;N&gt;&amp;latlng=&lt;LATLNG&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>N</td>
+<td>An number of kilometres defining the search radius.</td>
+</tr>
+<tr>
+<td>LATLNG</td>
+<td>Comma seperated value of latitude,longitude.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-decided-plans">Get All Decided Plans</h2>
+<pre class="highlight shell tab-shell"><code>curl http://api.cranson.co/plans/decided
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Decided"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all decided planning applications. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/decided</code></p>
+
+<h2 id="get-all-invalid-plans">Get All Invalid Plans</h2>
+<pre class="highlight shell tab-shell"><code>curl http://api.cranson.co/plans/invalid
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"invalid"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all invalid planning applications. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/invalid</code></p>
+
+<h2 id="get-all-unknown-status-plans">Get All Unknown status Plans</h2>
+<pre class="highlight shell tab-shell"><code>curl http://api.cranson.co/plans/unknown
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all unknown planning applications. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/unknown</code></p>
+
+<h2 id="get-all-pending-plans">Get All Pending Plans</h2>
+<pre class="highlight shell tab-shell"><code>curl http://api.cranson.co/plans/pending
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all pending planning applications. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/pending</code></p>
+
+<h2 id="get-all-on-appeal-plans">Get All On-Appeal Plans</h2>
+<pre class="highlight shell tab-shell"><code>curl http://api.cranson.co/plans/on_appeal
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"on_appeal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all on_appeal planning applications. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/on_appeal</code></p>
+
+          <h1 id="errors">Errors</h1>
+
+<p>The Cranson API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The plan requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified plan could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; You tried to access a plan with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone &ndash; The plan requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&rsquo;m a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many plans! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
