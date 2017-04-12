@@ -273,6 +273,62 @@ By default, plans are ordered by latest registration date.</p>
 
 <p><code class="prettyprint">GET http://api.cranson.co/plans</code></p>
 
+<h2 id="get-all-planning-applications-registered-in-the-last-month">Get All Planning Applications Registered In The Last Month</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.cranson.co/plans/recently_registered"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Decided"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">snipped</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all recently registered plans, paginated in batches of 50.<br>
+All enumerated responses use link-header pagination. Please use this to iterate over the paged responses.<br>
+By default, plans are ordered by latest registration date.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/recently_registered</code></p>
+
+<h2 id="get-all-planning-applications-decided-in-the-last-month">Get All Planning Applications Decided In The Last Month</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.cranson.co/plans/recently_decided"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">14939</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Decided"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="s2">"2017-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Two storey extension to existing two storey two bedroom dwelling..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://planning.fingalcoco.ie/swiftlg/apas/run/WPHAPPDETAIL.DisplayURL?theApnID=FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="s2">"FW16A/0147"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registration_date"</span><span class="p">:</span><span class="s2">"2016-12-29"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"The Wren's Nest, R121, Westmanstown, Clonsilla, Dublin 15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">snipped</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all plans decided in the last month, paginated in batches of 50.<br>
+All enumerated responses use link-header pagination. Please use this to iterate over the paged responses.<br>
+By default, plans are ordered by latest registration date.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.cranson.co/plans/recently_decided</code></p>
+
 <h2 id="get-a-specific-planning-application">Get a Specific Planning Application</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.cranson.co/plans/14939"</span>
 </code></pre>
