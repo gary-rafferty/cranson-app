@@ -85,6 +85,24 @@ RSpec.describe Plan, type: :model do
     end
   end
 
+  describe '#recently_registered' do
+    it 'includes plans with registration_dates within the last month' do
+      recent = create(:plan, registration_date: 2.weeks.ago.to_date)
+      old    = create(:plan, registration_date: 2.months.ago.to_date)
+
+      expect(Plan.recently_registered).to eq ([recent])
+    end
+  end
+
+  describe '#recently_decided' do
+    it 'includes plans with decision_dates within the last month' do
+      recent = create(:plan, decision_date: 2.weeks.ago.to_date)
+      old    = create(:plan, decision_date: 2.months.ago.to_date)
+
+      expect(Plan.recently_decided).to eq ([recent])
+    end
+  end
+
   describe 'searching' do
     let!(:hit) { create(:plan, address: 'Dublin Road') }
     let!(:miss){ create(:plan, address: 'Malahide Road') }

@@ -15,6 +15,8 @@ class Plan < ApplicationRecord
       "ST_DWithin(location::geography, \'POINT(#{latlon.join(' ')})\'::geography, #{kilometres.to_i * 1000})"
     )
   }
+  scope :recently_registered, -> { where("registration_date > ?", 1.month.ago.to_date) }
+  scope :recently_decided, -> { where("decision_date > ?", 1.month.ago.to_date) }
 
   default_scope { order(registration_date: :desc) }
 
