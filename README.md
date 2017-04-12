@@ -60,6 +60,12 @@ $ curl localhost:3000/plans/pending
 # /plans/on_appeal will return all on_appeal plans
 $ curl localhost:3000/plans/on_appeal
 
+# /plans/recently_registered will return all plans registered in the last month
+$ curl localhost:3000/plans/recently_registered
+
+# /plans/recently_decided will return all plans decided in the last month 
+$ curl localhost:3000/plans/recently_decided
+
 ```
 
 #### Importing data
