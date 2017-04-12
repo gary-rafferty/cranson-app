@@ -61,6 +61,18 @@ class PlansController < ApplicationController
     paginate json: plans, per_page: 50
   end
 
+  def recently_registered
+    plans = Plan.recently_registered
+
+    paginate json: plans, per_page: 50
+  end
+
+  def recently_decided
+    plans = Plan.recently_decided
+
+    paginate json: plans, per_page: 50
+  end
+
   private
 
   def record_not_found(error)

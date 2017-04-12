@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get :unknown
       get :pending
       get :on_appeal
+      get :recently_registered
+      get :recently_decided
     end
   end
 end

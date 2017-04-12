@@ -142,4 +142,24 @@ RSpec.describe PlansController, type: :controller do
       expect(body[0]['status']).to eq 'On Appeal'
     end
   end
+
+  describe '#recently_registered' do
+    let!(:plan) { create(:plan, registration_date: 1.week.ago.to_date) }
+
+    it "paginates recently_registered plans" do
+      get :recently_registered
+      body = JSON.parse(response.body)
+      expect(body[0]['registration_date']).to be > 1.month.ago
+    end
+  end
+
+  describe '#recently_decided' do
+    let!(:plan) { create(:plan, decision_date: 1.week.ago.to_date) }
+
+    it "paginates recently_decided plans" do
+      get :recently_decided
+      body = JSON.parse(response.body)
+      expect(body[0]['decision_date']).to be > 1.month.ago
+    end
+  end
 end
