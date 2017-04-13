@@ -111,6 +111,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    newrelic_rpm (4.1.0.333)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -205,6 +206,7 @@ DEPENDENCIES
   factory_girl_rails
   kaminari
   listen (~> 3.0.5)
+  newrelic_rpm
   pg (~> 0.18)
   pg_search
   puma (~> 3.0)

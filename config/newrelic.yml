@@ -1,0 +1,16 @@
+common: &default_settings
+  license_key: e0f461a0fcc4d1e94df87b0fc7e60ae12cf66c64
+
+app_name: cranson-app
+  log_level: info
+
+development:
+  <<: *default_settings
+  app_name: cranson-app (development)
+
+test:
+  <<: *default_settings
+  monitor_mode: false
+
+production:
+  <<: *default_settings
