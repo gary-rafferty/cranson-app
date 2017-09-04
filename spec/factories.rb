@@ -1,4 +1,9 @@
 FactoryGirl.define do
+
+  factory :authority do
+    name "Authority One"
+  end
+
   factory :plan do
     status "Decided"
     decision_date "2016-12-13"
