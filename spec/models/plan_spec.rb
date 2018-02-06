@@ -14,6 +14,14 @@ RSpec.describe Plan, type: :model do
     end
   end
 
+  describe 'associations' do
+    let(:plan) { build(:plan) }
+
+    it 'belongs to a authority' do
+      expect(plan.authority).to_not be_nil
+    end
+  end
+
   describe 'scopes' do
     let!(:decided) { create(:plan) }
 
@@ -118,6 +126,7 @@ RSpec.describe Plan, type: :model do
 
   describe '.persist' do
     describe 'for a new planning reference' do
+      let(:authority) { create(:authority) }
       let(:plan) do
         double('observed_plan',
           planning_reference: 'abc/123',
@@ -134,19 +143,20 @@ RSpec.describe Plan, type: :model do
 
       it 'creates a new record' do
         expect {
-          Plan.persist(plan)
+          Plan.persist(plan, authority)
         }.to change { Plan.count }.from(0).to(1)
       end
 
       it 'will not create an audit record' do
         expect {
-          Plan.persist(plan).not_to change { Audited::Audit.count }
+          Plan.persist(plan, authority).not_to change { Audited::Audit.count }
         }
       end
     end
   end
 
   describe 'for an existing planning reference' do
+    let(:authority) { create(:authority) }
     let!(:existing) { create(:plan) }
 
     describe 'when there are no changes' do
@@ -166,18 +176,19 @@ RSpec.describe Plan, type: :model do
 
       it 'will not update the record' do
         expect {
-          Plan.persist(plan)
+          Plan.persist(plan, authority)
         }.not_to change { Plan.count }
       end
 
       it 'will not create an audit record' do
         expect {
-          Plan.persist(plan)
+          Plan.persist(plan, authority)
         }.not_to change { Audited::Audit.count }
       end
     end
 
     describe 'when there are changes' do
+      let(:authority) { create(:authority) }
       let(:plan) do
         double('observed_plan_with_changes',
           planning_reference: existing.reference,
@@ -194,7 +205,7 @@ RSpec.describe Plan, type: :model do
 
       it 'will update the record' do
         expect {
-          Plan.persist(plan)
+          Plan.persist(plan, authority)
         }.not_to change { Plan.count }
 
         updated_plan = Plan.where(reference: existing.reference).first
@@ -203,7 +214,7 @@ RSpec.describe Plan, type: :model do
 
       it 'will create an audit record' do
         expect {
-          Plan.persist(plan)
+          Plan.persist(plan, authority)
         }.to change { Audited::Audit.count }.from(0).to(1)
 
         updated_plan = Plan.where(reference: existing.reference).first

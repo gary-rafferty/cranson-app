@@ -1,7 +1,9 @@
 class Plan < ApplicationRecord
   include PgSearch
 
-  audited except: :location, on: :update
+  audited except: [:location, :authority_id], on: :update
+
+  belongs_to :authority
 
   validates :status, :description, :reference, :location, :reference, :registration_date, :address, presence: true
 
@@ -23,7 +25,7 @@ class Plan < ApplicationRecord
   pg_search_scope :search_by_address, against: :address
   
   class << self
-    def persist(_plan)
+    def persist(_plan, authority)
       plan = Plan.where(reference: _plan.planning_reference).first_or_initialize
 
       plan.reference         =  _plan.planning_reference
@@ -34,6 +36,7 @@ class Plan < ApplicationRecord
       plan.more_info_link    =  _plan.more_information
       plan.registration_date =  _plan.registration_date
       plan.decision_date     =  _plan.decision_date
+      plan.authority_id      =  authority.id
 
       return unless (plan.changed? or plan.new_record?)
         
