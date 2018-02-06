@@ -23,7 +23,7 @@ class Plan < ApplicationRecord
   default_scope { order(registration_date: :desc) }
 
   pg_search_scope :search_by_address, against: :address
-  
+
   class << self
     def persist(_plan, authority)
       plan = Plan.where(reference: _plan.planning_reference).first_or_initialize
@@ -39,7 +39,7 @@ class Plan < ApplicationRecord
       plan.authority_id      =  authority.id
 
       return unless (plan.changed? or plan.new_record?)
-        
+
       plan.save!
 
     rescue ActiveRecord::RecordInvalid => e
