@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/gary-rafferty/cranson.git
-  revision: b30b6b430116dadfaf512d760d18ad4c9c2cc754
+  revision: b54268815ede9253abf0e9193f5e1bc3ccb866f3
   specs:
-    cranson (0.1.0)
+    cranson (0.2.2)
       nokogiri (~> 1.8.2)
 
 GIT
