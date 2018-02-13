@@ -83,10 +83,10 @@ This is useful if you are expecting data to change, but do not want the audits t
 
 Run `./bin/rake spec` to run the current specs
 
-#### TODOs
+#### TODOs
 
-- [ ] Can we derive / access any other resources not exposed in the dataset
-- [ ] Investigate other authority datasets
+- [ ] Can we derive / access any other resources not exposed in the dataset?
+- [ ] Add support for new authorities as the become parseable by Cranson
 
 #### Contributing
 
